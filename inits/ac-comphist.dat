@@ -1,0 +1,22 @@
+((("set-language-environment" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("prefer-coding-system" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("utf-8" .
+   [0 0 0 1 0])
+  ("set-file-name-coding-system" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("set-keyboard-coding-system" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("cp932" .
+   [0 0 0 0 2])
+  ("set-terminal-coding-system" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("std" .
+   [1 0 0])
+  ("value" .
+   [1 0 0 0 0])
+  ("static" .
+   [0 0 0 1 0 0])
+  ("argv" .
+   [1 0 0 0])))
