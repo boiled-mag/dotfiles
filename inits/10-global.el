@@ -10,6 +10,7 @@
 
 ;; 行番号表示
 (global-linum-mode)
+(column-number-mode t)
 
 ;; ツールバーを非表示に
 (tool-bar-mode 0)
@@ -19,6 +20,15 @@
 
 ;; 対応する括弧を光らせる
 (show-paren-mode 1)
+
+;; ビープ音を消す.
+(setq ring-bell-function 'ignore)
+
+;; タブをスペースとして入力する.
+(setq-default tab-width 4 indent-tabs-mode nil)
+
+;; 行末のスペースを表示する.
+(setq-default show-trailing-whitespace t)
 
 ;;
 ;; 言語設定. UTF-8にする.

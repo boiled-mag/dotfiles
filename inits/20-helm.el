@@ -37,3 +37,28 @@
 
 (define-key global-map (kbd "C-;") 'helm-mini)
 (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
+
+
+
+;;
+;; helm-gtags
+;;
+(add-hook 'helm-gtags-mode-hook
+          '(lambda()
+             ;; 入力されたタグの定義元へジャンプ
+             (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
+             ;; 入力タグを参照する場所へジャンプ
+             (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
+             ;; 入力したシンボルを参照する場所へジャンプ
+             (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
+             ;; タグ一覧からタグを選択し, その定義元にジャンプする
+             (local-set-key (kbd "M-l") 'helm-gtags-select)
+             ;; ジャンプ前の場所に戻る
+             (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)))
+
+(custom-set-variables
+ '(helm-gtags-path-style 'relative)
+ ;; '(helm-gtags-ignore-case t)
+ '(helm-gtags-display-style 'detail)
+ '(helm-gtags-auto-update t))
+

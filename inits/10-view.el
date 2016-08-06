@@ -11,3 +11,10 @@
 ;; アクティブウィンドウ／非アクティブウィンドウ（alphaの値で透明度を指定）
 (add-to-list 'default-frame-alist '(alpha . (0.95 0.95)))
 
+
+(setq initial-frame-alist
+      (append '(
+;;                (top . 10) ;;
+;;                (left . 10) ;;
+                (width . 120) ;;
+                (height . 56)))) ;;
