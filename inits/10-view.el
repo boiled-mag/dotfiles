@@ -14,7 +14,7 @@
 
 (setq initial-frame-alist
       (append '(
-;;                (top . 10) ;;
-;;                (left . 10) ;;
+                (top . 10) ;;
+                (left . 10) ;;
                 (width . 120) ;;
                 (height . 56)))) ;;
