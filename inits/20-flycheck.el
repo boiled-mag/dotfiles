@@ -38,10 +38,26 @@
 
 ;; syntax checker by gcc at LANG=ja_JP.XXX
 (flycheck-define-checker c/c++-gcc-ja
-  "A C/C++ checker using g++."
-  :command ("gcc" "-std=c11" "-Wall" "-Wextra" "-pedantic" source)
+  "A C checker using gcc."
+  :command ("gcc"
+            "-std=c11"
+            "-Wall" "-Wextra" "-pedantic"
+            (option-list "-include" flycheck-gcc-includes)
+            (option-list "-I" flycheck-gcc-include-path)
+            (eval flycheck-gcc-args)
+            "-x" (eval
+                  (pcase major-mode
+                    (`c++-mode "c++")
+                    (`c-mode "c")))
+            "-S" "-o" null-device
+            source)
+;;            "-")
+;;  :standard-input t
   :error-patterns  ((error line-start
                            (file-name) ":" line ":" column ":" " エラー: " (message)
+                           line-end)
+                    (error line-start
+                           (file-name) ":" line ":" column ":" " 致命的エラー: " (message)
                            line-end)
                     (warning line-start
                            (file-name) ":" line ":" column ":" " 警告: " (message)
@@ -50,10 +66,21 @@
 
 ;; syntax checker by g++ at LANG=ja_JP.XXX
 (flycheck-define-checker c/c++-g++-ja
-  "A C/C++ checker using g++."
-  :command ("g++" "-std=c++14" "-Wall" "-Wextra" "-pedantic" source)
+  "A C++ checker using g++."
+  :command ("g++"
+            "-std=c++14"
+            "-Wall" "-Wextra" "-pedantic"
+            (option-list "-include" flycheck-gcc-includes)
+            (option-list "-I" flycheck-gcc-include-path)
+            "-S" "-o" null-device
+            source)
+;;            "-")
+;;  :standard-input t
   :error-patterns  ((error line-start
                            (file-name) ":" line ":" column ":" " エラー: " (message)
+                           line-end)
+                    (error line-start
+                           (file-name) ":" line ":" column ":" " 致命的エラー: " (message)
                            line-end)
                     (warning line-start
                            (file-name) ":" line ":" column ":" " 警告: " (message)

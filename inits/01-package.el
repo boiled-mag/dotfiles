@@ -1,8 +1,8 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
-;;
+;;=======================================================================
 ;; for El-Get configurations.
-;;
+;;=======================================================================
 ;; 下記のサイトを参考に設定.
 ;; http://tarao.hatenablog.com/entry/20150221/1424518030
 ;;
@@ -17,19 +17,24 @@
 
 (el-get-bundle! auto-complete)
 (el-get-bundle! helm)
+(el-get-bundle! helm-gtags)
 (el-get-bundle! color-theme)
 (el-get-bundle! eldoc-extension)
 
 (el-get-bundle! yasnippet)
 (el-get-bundle! flycheck)
 
-(el-get-bundle! helm-gtags)
+(el-get-bundle! cmake-mode)
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
+;;=======================================================================
+;; Packages
+;;=======================================================================
+(require 'package)
 
 ;; MELPA
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
