@@ -1,15 +1,19 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
-;;=======================================================================
-;; ~/.emacs.d/site-lisp 以下全部読み込み
-;;=======================================================================
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")))
 
+
+;;=======================================================================
+;; ~/.emacs.d/site-lisp 以下全部読み込み
+;;=======================================================================
 (let ((default-directory (expand-file-name "~/.emacs.d/site-lisp")))
   (add-to-list 'load-path default-directory)
   (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
@@ -39,5 +43,3 @@
          ;; (init-loader-error-log (error-message-string e)) ；削除
          (init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
          )))))
-
-

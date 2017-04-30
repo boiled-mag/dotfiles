@@ -26,8 +26,13 @@
 ;;
 
 ;; emacs-lisp-checkdocだけは無効化.
-(with-eval-after-load 'flycheck
-  (setq-default flycheck-disable-checkers '(emacs-lisp-checkdoc)))
+(add-hook 'emacs-lisp-mode-hook
+           '(lambda ()
+              (setq flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+              ))
+
+;; (with-eval-after-load 'flycheck
+;;   (setq-default flycheck-disable-checkers '(emacs-lisp-checkdoc)))
 
 ;;
 ;; C,C++向け設定.
