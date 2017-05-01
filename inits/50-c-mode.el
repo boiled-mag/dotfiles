@@ -4,12 +4,15 @@
 ;; Coding Style
 ;;=======================================================================
 ;; C/C++共通
+(with-eval-after-load 'c++-mode
+  (setq-default c-basic-offset 4))
+
+;; C/C++共通
 (defun my-c-common-mode ()
   "C, C++ original mode setup function."
   (c-set-style "stroustrup")
   (show-paren-mode t)
   (setq tab-width 4)
-  (setq-default c-basic-offset 4)
   (setq indent-tabs-mode nil)
   )
 
@@ -32,7 +35,6 @@
             (c-set-style "stroustrup")
             (show-paren-mode t)
             (setq tab-width 4)
-            (setq-default c-basic-offset 4)
             (setq indent-tabs-mode nil)
             (c-set-offset 'innamespace 0)     ;; namespace {}ではインデントしない.
             (c-set-offset 'arglist-intro '+)  ;; 引数リストの引数の一行目.
@@ -62,4 +64,8 @@
 ;;=======================================================================
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
+
+;; highlight-symbol-mode
+(add-hook 'c-mode-hook 'highlight-symbol-mode)
+(add-hook 'c++-mode-hook 'highlight-symbol-mode)
 
