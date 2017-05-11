@@ -49,19 +49,61 @@
 ;; (set-default-coding-systems 'utf-8)
 ;; (prefer-coding-system 'utf-8)
 
-;; フォントを12ptのRicty Diminishedに設定する.
-(create-fontset-from-ascii-font "Inconsolata-12"
+
+;;;
+;;; フォント設定.
+;;;
+
+;;; for Inconsolata
+(create-fontset-from-ascii-font "Inconsolata:size=16:weight=normal:slant=normal"
                                 nil
                                 "Inconsolata")
+;;; Inconsolataの場合, 非ASCIIコード部分はRicty Diminishedを使用する.
 (set-fontset-font "fontset-Inconsolata"
                   'unicode
-                  "Ricty Diminished-12"
+                  ;; (font-spec)ではなく「"Ricty Diminished-11"」のような指定もできる.
+                  (font-spec
+                   :family "Ricty Diminished"
+                   :size 16)
                   nil
                   'append)
-(add-to-list 'default-frame-alist '(font . "fontset-Inconsolata"))
 
-;; Ctrl+X Ctrl+Cで間違えてEmacsを終了しないように設定する.
-;; このコマンドの代わりに, M-x exitと入力して終了する.
+;;; for MeiryoKe_Console
+(create-fontset-from-ascii-font "MeiryoKe_Console:size=11"
+                                nil
+                                "MeiryoKe_Console")
+(set-fontset-font "fontset-MeiryoKe_Console"
+                  'unicode
+                  (font-spec
+                   :family "MeiryoKe_Console"
+                   :size 11)
+                  nil
+                  'append)
+
+;;; for Ricty Diminished
+(create-fontset-from-ascii-font "Ricty Diminished:size=16:weight=normal:slant=normal"
+                                nil
+                                "RictyDiminished")
+;(set-fontset-font "fontset-RictyDiminished"
+(set-fontset-font nil
+                  'unicode
+                  (font-spec
+                   :family "Ricty Diminished"
+                   :size 16)
+                  nil
+                  'append)
+
+;;;
+;;; 上記で作成したフォントセットから, 使用するものを選択する.
+;;;
+(add-to-list 'default-frame-alist '(font . "fontset-Inconsolata"))
+;(add-to-list 'default-frame-alist '(font . "fontset-MeiryoKe_Console"))
+;(add-to-list 'default-frame-alist '(font . "fontset-RictyDiminished"))
+
+
+;;; Ctrl+X Ctrl+Cで間違えてEmacsを終了しないように設定する.
+;;; このコマンドの代わりに, M-x exitと入力して終了する.
+;;;
 (global-unset-key (kbd "C-x C-c"))
 (defalias 'exit 'save-buffers-kill-emacs)
 
