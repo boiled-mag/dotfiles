@@ -20,3 +20,6 @@ set fileencodings=utf-8,sjis,cp932,iso-2022-jp,euc-jp
 " 「:e ++ff=改行コード」で再読み込み.
 set fileformats=unix,dos,mac
 
+syntax on
+colorscheme elflord
+
