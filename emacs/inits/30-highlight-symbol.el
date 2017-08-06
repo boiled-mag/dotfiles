@@ -10,5 +10,6 @@
   (with-eval-after-load 'highlight-symbol
     (global-set-key (kbd "C-3") 'highlight-symbol-at-point)
     (global-set-key (kbd "M-C-3") 'highlight-symbol-remove-all)
-    (set-variable highlight-nonselected-windows t)))
+;;    (set-variable highlight-nonselected-windows t)))
+    (setq highlight-nonselected-windows t)))
 
