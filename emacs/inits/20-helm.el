@@ -1,9 +1,19 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
-(add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
+(when (require 'helm nil t)
+  (with-eval-after-load
+    (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-z") 'helm-select-action)
+;    (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+;    (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+    ))
 
-(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
-(define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+(when (require 'helm-config nil t))
+
+(add-hook 'helm-mode-hook
+          (lambda ()
+            (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))))
 
 (defvar helm-source-emacs-commands
   (helm-build-sync-source "Emacs commands"
@@ -61,4 +71,6 @@
  ;; '(helm-gtags-ignore-case t)
  '(helm-gtags-display-style 'detail)
  '(helm-gtags-auto-update t))
+
+(helm-mode 1)
 
