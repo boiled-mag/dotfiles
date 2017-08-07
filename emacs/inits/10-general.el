@@ -7,8 +7,8 @@
 (setq auto-save-default nil) ; .#* とかのバックアップファイルを作らない
 
 ;; 行番号, 列番号の表示
-(global-linum-mode t)
-(setq linum-format "%4d:")
+;;(global-linum-mode t)
+;;(setq linum-format "%4d:")
 (column-number-mode t)     ; 列番号をモードラインに表示する
 
 ;; 各種バーの表示／非表示
@@ -81,7 +81,7 @@
                   'append)
 
 ;;; for Ricty Diminished
-(create-fontset-from-ascii-font "Ricty Diminished:size=16:weight=normal:slant=normal"
+(create-fontset-from-ascii-font "Ricty Diminished:size=18:weight=normal:slant=normal"
                                 nil
                                 "RictyDiminished")
 ;(set-fontset-font "fontset-RictyDiminished"
@@ -89,16 +89,16 @@
                   'unicode
                   (font-spec
                    :family "Ricty Diminished"
-                   :size 16)
+                   :size 18)
                   nil
                   'append)
 
 ;;;
 ;;; 上記で作成したフォントセットから, 使用するものを選択する.
 ;;;
-(add-to-list 'default-frame-alist '(font . "fontset-Inconsolata"))
+;(add-to-list 'default-frame-alist '(font . "fontset-Inconsolata"))
 ;(add-to-list 'default-frame-alist '(font . "fontset-MeiryoKe_Console"))
-;(add-to-list 'default-frame-alist '(font . "fontset-RictyDiminished"))
+(add-to-list 'default-frame-alist '(font . "fontset-RictyDiminished"))
 
 
 ;;; Ctrl+X Ctrl+Cで間違えてEmacsを終了しないように設定する.
@@ -107,11 +107,24 @@
 (global-unset-key (kbd "C-x C-c"))
 (defalias 'exit 'save-buffers-kill-emacs)
 
+;;
 ;; color-theme
-(when (require 'color-theme)
-  (color-theme-initialize)
-  (color-theme-charcoal-black))
-;  (color-theme-deep-blue))   ; default
+;;
+;;(when (require 'color-theme nil t)
+;;  (color-theme-initialize)
+;;  (color-theme-charcoal-black))
+;;  (color-theme-deep-blue))   ; default
+
+;;
+;; doom-themes
+;;
+(when (require 'doom-themes nil t)
+  ;;
+  (load-theme 'doom-vibrant t)
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme
+  (doom-themes-neotree-config))
 
 ;; ウィンドウを透明にする
 ;; アクティブウィンドウ／非アクティブウィンドウ（alphaの値で透明度を指定）
@@ -119,8 +132,8 @@
 
 (setq initial-frame-alist
       (append '(
-                (top . 10) ;;
-                (left . 200) ;;
+                (top . 0) ;;
+                (left . 0) ;;
                 (width . 120) ;;
                 (height . 56)))) ;;
 
@@ -149,4 +162,6 @@
 ;; dired設定
 (require 'dired-x)
 (ffap-bindings)
+(setq dired-dwin-target t)
+
 
