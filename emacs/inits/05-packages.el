@@ -14,7 +14,9 @@
     company
     auto-complete
     flycheck
+    flycheck-popup-tip
     flycheck-pos-tip
+    flycheck-rust
     yasnippet
     eldoc-extension
     helm

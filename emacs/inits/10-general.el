@@ -100,10 +100,14 @@
 ;(add-to-list 'default-frame-alist '(font . "fontset-MeiryoKe_Console"))
 (add-to-list 'default-frame-alist '(font . "fontset-RictyDiminished"))
 
+;;
+;; Key設定
+;;
+(global-set-key (kbd "<f5>") 'revert-buffer)
 
-;;; Ctrl+X Ctrl+Cで間違えてEmacsを終了しないように設定する.
-;;; このコマンドの代わりに, M-x exitと入力して終了する.
-;;;
+;; Ctrl+X Ctrl+Cで間違えてEmacsを終了しないように設定する.
+;; このコマンドの代わりに, M-x exitと入力して終了する.
+;;
 (global-unset-key (kbd "C-x C-c"))
 (defalias 'exit 'save-buffers-kill-emacs)
 
