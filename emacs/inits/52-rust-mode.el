@@ -1,21 +1,26 @@
-;; rust-mode
+;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
 ;;; cargoでインストールしたracerやrustfmtや, コンパイラにパスを通す.
-(add-to-list 'exec-path (expand-file-name "/cygdrive/c/Users/mag/.cargo/bin/"))
+(add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
 
-(add-hook 'racer-mode-hook #'eldoc-mode)
+;;; rust-mode
+(use-package rust-mode
+  :defer t
+  :config (setq rust-format-on-save t))
 
-(eval-after-load "rust-mode"
-  (lambda ()
-    '(setq-default rust-format-on-save t)))
+;;; cargo
+(use-package cargo
+  :init
+  (add-hook 'rust-mode-hook 'cargo-minor-mode)
+  (add-hook 'toml-mode-hook 'cargo-minor-mode))
 
-;(custom-set-variables
-; '(racer-cargo-home (expand-file-name "C:/Users/mag/.cargo"))
-; '(racer-rust-src-path (expand-file-name "c:/Users/mag/.rustup/toolchains/stable-x86_64-pc-windows-msvc/lib/ustlib/src/rust/src")))
+;;; racer
+(use-package racer
+  :init
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'racer-mode-hook #'eldoc-mode))
 
-(add-hook 'rust-mode-hook (lambda()
-                            (racer-mode)))
-
-(with-eval-after-load 'rust-mode
-    (flycheck-rust-setup))
-
+;;; flycheck-rust
+(use-package flycheck-rust
+  :init
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
