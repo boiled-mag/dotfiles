@@ -6,11 +6,6 @@
 
 (when (require 'flycheck nil 'noerror)
   (custom-set-variables
-   ;; エラーをポップアップで表示
-   '(flycheck-display-errors-function
-     (lambda (errors)
-       (let ((messages (mapcar #'flycheck-error-message errors)))
-         (popup-tip (mapconcat 'identity messages "\n")))))
    ;; ポップアップでエラー表示するときに付くprefix文字の指定.
    '(flycheck-popup-tip-error-prefix "* ")
    '(flycheck-display-errors-delay 0.5))
@@ -21,19 +16,19 @@
   (add-hook 'c++-mode-hook 'flycheck-mode)
   ;; Emacs Lispモードで有効化
   (add-hook 'emacs-lisp-mode-hook 'flycheck-mode)
+  ;; Rustモードで有効化
+  (add-hook 'rust-mode-hook 'flycheck-mode)
   )
 
-;;
-;; flycheck-popup-tip, flycheck-pos-tip
-;;
-(with-eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode)
-  ;; flycheck-popup-tipをflycheck-pos-tipと合わせて使う場合の設定.
-  (if (display-graphic-p)
-      (flycheck-pos-tip-mode)
-    (flycheck-popup-tip-mode)))
 
 ;;
+;; flycheck-popup-tip
+;;
+;; ポップアップでエラー等を表示する.
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode))
+
+
 ;; Emacs Lisp向け設定.
 ;;
 
