@@ -100,10 +100,11 @@
 ;(add-to-list 'default-frame-alist '(font . "fontset-MeiryoKe_Console"))
 (add-to-list 'default-frame-alist '(font . "fontset-RictyDiminished"))
 
-;;
-;; Key設定
-;;
-(global-set-key (kbd "<f5>") 'revert-buffer)
+;;;
+;;; Key設定
+;;;
+(global-set-key (kbd "<f5>") 'revert-buffer) ; F5キーでバッファ再読み込み.
+(global-set-key (kbd "C-c C-f") 'recentf-open-files) ; 履歴機能からファイルを開く.
 
 ;; Ctrl+X Ctrl+Cで間違えてEmacsを終了しないように設定する.
 ;; このコマンドの代わりに, M-x exitと入力して終了する.
@@ -167,5 +168,15 @@
 (require 'dired-x)
 (ffap-bindings)
 (setq dired-dwin-target t)
+
+
+;;;
+;;; Recentf設定
+;;;
+(when (require 'recent nil t)
+  (setq recentf-max-saved-items 2000)   ; 2000ファイルまで履歴保存する.
+  (setq recentf-auto-cleanup 'never)    ; 履歴から存在しないファイルを削除する.
+  (setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
+  (recentf-mode 1))                     ; Emacs標準の履歴機能を使用する.
 
 
