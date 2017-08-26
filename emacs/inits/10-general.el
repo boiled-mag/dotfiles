@@ -20,7 +20,7 @@
 (setq show-paren-delay 0)
 (setq show-paren-style 'single)
 (show-paren-mode t)
-;; (global-hl-line-mode t)
+(global-hl-line-mode t)                 ; 現在行を強調する.
 
 ;; ビープ音を消す.
 (setq ring-bell-function 'ignore)
@@ -173,7 +173,7 @@
 ;;;
 ;;; Recentf設定
 ;;;
-(when (require 'recent nil t)
+(when (require 'recentf nil t)
   (setq recentf-max-saved-items 2000)   ; 2000ファイルまで履歴保存する.
   (setq recentf-auto-cleanup 'never)    ; 履歴から存在しないファイルを削除する.
   (setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
