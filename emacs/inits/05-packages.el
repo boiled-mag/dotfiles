@@ -8,19 +8,23 @@
 ;; Manually installed packages by packages.el
 (defvar my/packages
   '(init-loader
-    color-theme
+    color-theme-modern
     doom-themes
     highlight-symbol
     company
     auto-complete
     flycheck
     flycheck-popup-tip
-    flycheck-pos-tip
+;;    flycheck-pos-tip
     flycheck-rust
     yasnippet
     eldoc-extension
     helm
     helm-gtags
+    rust-mode
+    racer
+    cargo
+    use-package
     ))
 
 ;;

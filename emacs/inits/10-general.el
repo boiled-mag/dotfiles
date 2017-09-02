@@ -112,24 +112,26 @@
 (global-unset-key (kbd "C-x C-c"))
 (defalias 'exit 'save-buffers-kill-emacs)
 
-;;
-;; color-theme
-;;
-;;(when (require 'color-theme nil t)
-;;  (color-theme-initialize)
-;;  (color-theme-charcoal-black))
-;;  (color-theme-deep-blue))   ; default
+
+;;;
+;;; テーマ設定
+;;;
+;;; themeフレームワークで書き直されたものをもとに, 重複している部分など少し手直しする.
+(when (require 'color-theme-modern nil t)
+  (setq custom-theme-directory "~/.emacs.d/custom-themes/")
+  (load-theme 'custom-charcoal-black t t)
+  (enable-theme 'custom-charcoal-black))
 
 ;;
 ;; doom-themes
 ;;
-(when (require 'doom-themes nil t)
-  ;;
-  (load-theme 'doom-vibrant t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme
-  (doom-themes-neotree-config))
+;; (when (require 'doom-themes nil t)
+;;   ;;
+;;   (load-theme 'doom-vibrant t)
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   ;; Enable custom neotree theme
+;;   (doom-themes-neotree-config))
 
 ;; ウィンドウを透明にする
 ;; アクティブウィンドウ／非アクティブウィンドウ（alphaの値で透明度を指定）
