@@ -1,4 +1,4 @@
-;;; charcoal-black-theme.el --- charcoal-black theme
+;;; custom-charcoal-black-theme.el --- custom-charcoal-black theme
 
 ;; Copyright (C) 2003 by Lars Chr. Hausmann
 ;; Copyright (C) 2013 by Syohei YOSHIDA
@@ -22,15 +22,15 @@
 
 ;;; Commentary:
 ;;
-;; Port of charcoal-black theme from `color-themes'
+;; Port of custom-charcoal-black theme from `color-themes'
 
 ;;; Code:
 
-(deftheme charcoal-black
-  "charcoal-black theme")
+(deftheme custom-charcoal-black
+  "custom-charcoal-black theme")
 
 (custom-theme-set-faces
- 'charcoal-black
+ 'custom-charcoal-black
 
  '(default ((t (:background "Grey15" :foreground "Grey"))))
  '(mouse ((t (:background "Grey"))))
@@ -300,6 +300,6 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'charcoal-black)
+(provide-theme 'custom-charcoal-black)
 
-;;; charcoal-black-theme.el ends here
+;;; custom-charcoal-black-theme.el ends here
