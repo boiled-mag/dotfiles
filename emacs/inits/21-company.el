@@ -1,5 +1,16 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
+;;
+;; company-modeの設定をhookにて行う関数
+;;
+(defun my/company-mode-hook ()
+  ;; [TODO]
+  ;; Windows環境で使用しているため一時的にcompany-clangを無効化する.
+  (setq company-backends (delete 'company-clang company-backends)))
+
+;;
+;; company-mode
+;;
 (when (require 'company nil t)
   (global-company-mode)
 ;;  (set-variable comapny-idle-delay 0.0)
@@ -7,7 +18,8 @@
 ;;  (set-variable company-minimum-prefix-length 2)
   (setq-default company-minimum-prefix-length 2)
 ;;  (set-variable company-selection-wrap-around t))
-  (setq-default company-selection-wrap-around t))
+  (setq-default company-selection-wrap-around t)
+  (add-hook 'company-mode-hook 'my/company-mode-hook))
 
 ;; 各モードごとにcompany-modeを有効にしたい場合は下記のようにhookさせる.
 ;; その際は(global-company-mode)を無効にする.

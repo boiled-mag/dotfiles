@@ -1,8 +1,8 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
-;;;
-;;; ivy
-;;;
+;;
+;; ivy
+;;
 (use-package ivy
   :ensure t
   :diminish ivy-mode
@@ -15,9 +15,9 @@
   (setq ivy-re-builders-alist
         '((t . ivy--regex-plus))))
 
-;;;
-;;; counsel
-;;;
+;;
+;; counsel
+;;
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (defvar counsel-find-file-ignore-regexp (regexp-opt '("./" "../")))
@@ -31,7 +31,7 @@
   :bind (("M-t" . 'counsel-gtags-find-definition)
          ("M-r" . 'counsel-gtags-find-reference)
          ("M-s" . 'counsel-gtags-find-symbol)
-         ("M-," . 'counsel-gtags-go-backward))
+         ("M-," . 'counsel-gtags-go-backward)
          ("M-." . 'counsel-gtags-go-forward))
   :config
   (add-hook 'c-mode-hook 'counsel-gtags-mode)
