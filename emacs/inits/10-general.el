@@ -116,7 +116,7 @@
 ;;;
 ;;; テーマ設定
 ;;;
-;;; themeフレームワークで書き直されたものをもとに, 重複している部分など少し手直しする.
+;;; themeフレームワークで書き直されたものをもとに, 色が重複している部分など少し手直し.
 (when (require 'color-theme-modern nil t)
   (setq custom-theme-directory "~/.emacs.d/custom-themes/")
   (load-theme 'custom-charcoal-black t t)
@@ -145,26 +145,26 @@
                 (height . 56)))) ;;
 
 ;; Windows環境
-(when (or (eq system-type 'cygwin) (eq system-type 'windows-nt))
-  (setq default-input-method "W32-IME")
-  (setq-default w32-ime-mode-line-state-indicator "[--]")
-  (setq w32-ime-mode-line-state-indicator-list '("[--]" "[あ]" "[--]"))
-  (w32-ime-initialize)
-  ;;; 日本語入力時にカーソルの色を変える設定
-  (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "coral4")))
-;  (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "black")))
-  (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "blue3")))
-  ;; minibufferに移動したときに最初に日本語入力が無効な状態にする.
-  (add-hook 'minibuffer-setup-hook '(lambda ()
-                                      (deactivate-input-method)
-                                      (setq w32-ime-composition-window (minibuffer-window))))
-  ;; Helm使用中に日本語入力を無効にする.
-  (advice-add 'helm :around '(lambda (orig-fun &rest args)
-                               (let ((select-window-functions nil)
-                                     (w32-ime-composition-window (minibuffer-window)))
-                                 (deactivate-input-method)
-                                 (apply orig-fun args))))
-  )
+;; (when (or (eq system-type 'cygwin) (eq system-type 'windows-nt))
+;;   (setq default-input-method "W32-IME")
+;;   (setq-default w32-ime-mode-line-state-indicator "[--]")
+;;   (setq w32-ime-mode-line-state-indicator-list '("[--]" "[あ]" "[--]"))
+;;   (w32-ime-initialize)
+;;   ;;; 日本語入力時にカーソルの色を変える設定
+;;   (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "coral4")))
+;; ;  (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "black")))
+;;   (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "blue3")))
+;;   ;; minibufferに移動したときに最初に日本語入力が無効な状態にする.
+;;   (add-hook 'minibuffer-setup-hook '(lambda ()
+;;                                       (deactivate-input-method)
+;;                                       (setq w32-ime-composition-window (minibuffer-window))))
+;;   ;; Helm使用中に日本語入力を無効にする.
+;;   (advice-add 'helm :around '(lambda (orig-fun &rest args)
+;;                                (let ((select-window-functions nil)
+;;                                      (w32-ime-composition-window (minibuffer-window)))
+;;                                  (deactivate-input-method)
+;;                                  (apply orig-fun args))))
+;;   )
 
 ;; dired設定
 (require 'dired-x)

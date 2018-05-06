@@ -1,12 +1,10 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
-;;; cargoでインストールしたracerやrustfmtや, コンパイラにパスを通す.
-(add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
-
 ;;; rust-mode
 (use-package rust-mode
   :defer t
-  :config (setq rust-format-on-save t))
+  :config
+  (setq rust-format-on-save t))
 
 ;;; cargo
 (use-package cargo
@@ -23,4 +21,7 @@
 ;;; flycheck-rust
 (use-package flycheck-rust
   :init
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  (add-hook 'rust-mode-hook
+            '(lambda ()
+               (flycheck-mode)
+               (flycheck-rust-setup))))
