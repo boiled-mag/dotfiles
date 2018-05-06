@@ -96,17 +96,17 @@
                            line-end))
   :modes (c++-mode))
 
-(eval-after-load 'flycheck
-  '(add-to-list 'flycheck-checkers 'c/c++-gcc-ja))
+;; (eval-after-load 'flycheck
+;;   '(add-to-list 'flycheck-checkers 'c/c++-gcc-ja))
 
-(eval-after-load 'flycheck
-  '(add-to-list 'flycheck-checkers 'c/c++-g++-ja))
+;; (eval-after-load 'flycheck
+;;   '(add-to-list 'flycheck-checkers 'c/c++-g++-ja))
 
-(add-hook 'c-mode-hook
-          '(lambda ()
-             (flycheck-select-checker 'c/c++-gcc-ja)))
+;; (add-hook 'c-mode-hook
+;;           '(lambda ()
+;;              (flycheck-select-checker 'c/c++-gcc-ja)))
 
-(add-hook 'c++-mode-hook
-          '(lambda ()
-             (flycheck-select-checker 'c/c++-g++-ja)))
+;; (add-hook 'c++-mode-hook
+;;           '(lambda ()
+;;              (flycheck-select-checker 'c/c++-g++-ja)))
 
