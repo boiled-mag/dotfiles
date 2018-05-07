@@ -34,6 +34,7 @@
          ("M-," . 'counsel-gtags-go-backward)
          ("M-." . 'counsel-gtags-go-forward))
   :config
+  (setq counsel-gtags-auto-update t)    ; ファイルを保存したときに自動的にtagファイルを更新する.
   (add-hook 'c-mode-hook 'counsel-gtags-mode)
   (add-hook 'c++-mode-hook 'counsel-gtags-mode)
   )
