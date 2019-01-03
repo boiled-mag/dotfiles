@@ -1,24 +1,13 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
 (use-package highlight-symbol
+  :ensure t
+  :diminish highlight-symbol-mode
   :bind (("C-3"   . 'highlight-symbol-at-point)
          ("M-C-3" . 'highlight-symbol-remove-all))
+  :hook
+  ((c-mode c++-mode) . highlight-symbol-mode)
   :config
   (highlight-symbol-nav-mode t)
-  (setq highlight-symbol-idle-delay 1.0)  ; ƒnƒCƒ‰ƒCƒg‚·‚é‚Ü‚Å‚É1.0•b‚ÌƒfƒBƒŒƒC‚ð“ü‚ê‚é.
+  (setq highlight-symbol-idle-delay 1.0)  ; ãƒã‚¤ãƒ©ã‚¤ãƒˆã™ã‚‹ã¾ã§ã«1.0ç§’ã®ãƒ‡ã‚£ãƒ¬ã‚¤ã‚’å…¥ã‚Œã‚‹.
   )
-
-
-;; use-package‚É‘‚«Š·‚¦. ”O‚Ì‚½‚ßŒÃ‚¢Ý’è‚ðŽc‚·.
-;; (when (require 'highlight-symbol nil t)
-;;   (with-eval-after-load 'highlight-symbol
-;;     (global-set-key (kbd "C-3") 'highlight-symbol-at-point)
-;;     (global-set-key (kbd "M-C-3") 'highlight-symbol-remove-all))
-
-;; (defun my/highlight-symbol-mode-hook ()
-;; ;  (set-variable highlight-symbol-colors '("DarkOrange" "DodgerBlue4" "DeepPink1"))
-;;   (setq highlight-symbol-idle-delay 1.0) ; ƒnƒCƒ‰ƒCƒg‚·‚é‚Ü‚Å‚É1.0•b‚ÌƒfƒBƒŒƒC‚ð“ü‚ê‚é.
-;;   )
-
-;; (add-hook 'highlight-symbol-mode-hook 'my/highlight-symbol-mode-hook)
-

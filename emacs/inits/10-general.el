@@ -1,5 +1,8 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
+;; package.elでインストールしないelファイルを配置するディレクトリをload-pathに追加.
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
+
 ;; 起動時のディレクトリの変更
 (setq default-directory "~/")
 
@@ -25,9 +28,12 @@
 ;; ビープ音を消す.
 (setq ring-bell-function 'ignore)
 
+;; カーソルの点滅を OFF にする.
+(blink-cursor-mode 0)
+
 ;; タブをスペースとして入力する.
 (setq-default tab-width 4 indent-tabs-mode nil)
-;
+
 ;; 行末のスペースを表示する.
 (setq-default show-trailing-whitespace t)
 
@@ -49,51 +55,32 @@
 ;; (set-default-coding-systems 'utf-8)
 ;; (prefer-coding-system 'utf-8)
 
-
-
-;;;
-;;; Key設定
-;;;
+;;
+;; Key設定
+;;
 (global-set-key (kbd "<f5>") 'revert-buffer) ; F5キーでバッファ再読み込み.
 (global-set-key (kbd "C-c C-f") 'recentf-open-files) ; 履歴機能からファイルを開く.
 
 ;; Ctrl+X Ctrl+Cで間違えてEmacsを終了しないように設定する.
 ;; このコマンドの代わりに, M-x exitと入力して終了する.
-;;
 (global-unset-key (kbd "C-x C-c"))
 (defalias 'exit 'save-buffers-kill-emacs)
 
-
-;;;
-;;; テーマ設定
-;;;
-;;; themeフレームワークで書き直されたものをもとに, 色が重複している部分など少し手直し.
-(when (require 'color-theme-modern nil t)
-  (setq custom-theme-directory "~/.emacs.d/custom-themes/")
-  (load-theme 'custom-charcoal-black t t)
-  (enable-theme 'custom-charcoal-black))
-
-;;
-;; doom-themes
-;;
-;; (when (require 'doom-themes nil t)
-;;   ;;
-;;   (load-theme 'doom-vibrant t)
-;;   ;; Enable flashing mode-line on errors
-;;   (doom-themes-visual-bell-config)
-;;   ;; Enable custom neotree theme
-;;   (doom-themes-neotree-config))
+;; C-SPC で IME をトグルする
+(global-set-key (kbd "C-SPC") 'toggle-input-method)
+(define-key isearch-mode-map (kbd "C-SPC") 'isearch-toggle-input-method)
 
 ;; ウィンドウを透明にする
 ;; アクティブウィンドウ／非アクティブウィンドウ（alphaの値で透明度を指定）
-(add-to-list 'default-frame-alist '(alpha . (0.95 0.95)))
+;; (add-to-list 'default-frame-alist '(alpha . (0.95 0.95)))
 
+;; 起動時のウィンドウサイズを調整する. 使用する環境に応じて変更する.
 (setq initial-frame-alist
       (append '(
                 (top . 0) ;;
-                (left . 0) ;;
+                (left . 100) ;;
                 (width . 120) ;;
-                (height . 56)))) ;;
+                (height . 51)))) ;;
 
 ;; Windows環境
 ;; (when (or (eq system-type 'cygwin) (eq system-type 'windows-nt))
@@ -117,19 +104,20 @@
 ;;                                  (apply orig-fun args))))
 ;;   )
 
+;;
 ;; dired設定
-(require 'dired-x)
-(ffap-bindings)
-(setq dired-dwin-target t)
+;;
+(use-package dired-x
+  :config
+  (ffap-bindings)
+  (setq dired-dwin-target t))
 
-
-;;;
-;;; Recentf設定
-;;;
-(when (require 'recentf nil t)
+;;
+;; recentf設定
+;;
+(use-package recentf
+  :config
   (setq recentf-max-saved-items 2000)   ; 2000ファイルまで履歴保存する.
   (setq recentf-auto-cleanup 'never)    ; 履歴から存在しないファイルを削除する.
   (setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
   (recentf-mode 1))                     ; Emacs標準の履歴機能を使用する.
-
-

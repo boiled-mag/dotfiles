@@ -1,10 +1,12 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
-;;;
-;;; フォント設定.
-;;;
+;;
+;; フォント設定.
+;;
 
-;;; for Inconsolata
+;;
+;; for Inconsolata
+;;
 (create-fontset-from-ascii-font "Inconsolata:size=15:weight=normal:slant=normal"
                                 nil
                                 "Inconsolata")
@@ -18,7 +20,9 @@
                   nil
                   'append)
 
-;;; for MeiryoKe_Console
+;;
+;; for MeiryoKe_Console
+;;
 (create-fontset-from-ascii-font "MeiryoKe_Console:size=14"
                                 nil
                                 "MeiryoKe_Console")
@@ -30,7 +34,9 @@
                   nil
                   'append)
 
-;;; for Ricty Diminished
+;;
+;; for Ricty Diminished
+;;
 (create-fontset-from-ascii-font "Ricty Diminished:size=18:weight=normal:slant=normal"
                                 nil
                                 "RictyDiminished")
@@ -43,12 +49,14 @@
                   nil
                   'append)
 
-;;; CamingoCode + Ricty Diminished
-;;;   下記のようなサイズの組み合わせだと全角文字と半角文字のバランスがよい.
-;;;   他の組み合わせだとズレるので注意.
-;;;     + CamingoCode:size=13, Ricty Diminished:size=14
-;;;     + CamingoCode:size=15, Ricty Diminished:size=16
-;;;     + CamingoCode:size=17, Ricty Diminished:size=18
+;;
+;; CamingoCode + Ricty Diminished
+;;   下記のようなサイズの組み合わせだと全角文字と半角文字のバランスがよい.
+;;   他の組み合わせだとズレるので注意.
+;;     + CamingoCode:size=13, Ricty Diminished:size=14
+;;     + CamingoCode:size=15, Ricty Diminished:size=16
+;;     + CamingoCode:size=17, Ricty Diminished:size=18
+;;
 (create-fontset-from-ascii-font "CamingoCode:size=15:weight=normal:slant=normal"
                                 nil
                                 "CamingoCode_RictyDiminished")
@@ -59,10 +67,13 @@
                    :size 16)
                   nil
                   'append)
+;; ----- edit.start
+;;(add-to-list 'face-font-rescale-alist '(".*Ricty Diminished.*" . 0.85))
+;; ----- edit.end
 
-;;;
-;;; 上記で作成したフォントセットから, 使用するものを選択する.
-;;;
+;;
+;; 上記で作成したフォントセットから, 使用するものを選択する.
+;;
 ;(add-to-list 'default-frame-alist '(font . "fontset-Inconsolata"))
 ;(add-to-list 'default-frame-alist '(font . "fontset-MeiryoKe_Console"))
 ;(add-to-list 'default-frame-alist '(font . "fontset-RictyDiminished"))

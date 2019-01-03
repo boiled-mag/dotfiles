@@ -5,6 +5,7 @@
 ;;
 (use-package ivy
   :ensure t
+  :pin melpa                                ; ã“ã‚Œã‚’æŒ‡å®šã—ãªã„ã¨gnuã®å¤ã„ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã‚‹.
   :diminish ivy-mode
   :config
   (ivy-mode 1)
@@ -18,23 +19,25 @@
 ;;
 ;; counsel
 ;;
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(defvar counsel-find-file-ignore-regexp (regexp-opt '("./" "../")))
-
+(use-package counsel
+  :ensure t
+  :config
+  (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (defvar counsel-find-file-ignore-regexp (regexp-opt '("./" "../"))))
 
 ;;
 ;; counsel-gtags.el
 ;;
-;; package.el‚É‚Äcounsel-gtags.el‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¨‚­.
-(use-package counsel-gtags
-  :bind (("M-t" . 'counsel-gtags-find-definition)
-         ("M-r" . 'counsel-gtags-find-reference)
-         ("M-s" . 'counsel-gtags-find-symbol)
-         ("M-," . 'counsel-gtags-go-backward)
-         ("M-." . 'counsel-gtags-go-forward))
-  :config
-  (setq counsel-gtags-auto-update t)    ; ƒtƒ@ƒCƒ‹‚ğ•Û‘¶‚µ‚½‚Æ‚«‚É©“®“I‚Étagƒtƒ@ƒCƒ‹‚ğXV‚·‚é.
-  (add-hook 'c-mode-hook 'counsel-gtags-mode)
-  (add-hook 'c++-mode-hook 'counsel-gtags-mode)
-  )
+;; 2019.1.3 LSPãƒ¢ãƒ¼ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ä¸€æ™‚çš„ã«OFFã«ã—ã¦ã„ã‚‹.
+;; (use-package counsel-gtags
+;;   :ensure t
+;;   :bind (("M-t" . 'counsel-gtags-find-definition)
+;;          ("M-r" . 'counsel-gtags-find-reference)
+;;          ("M-s" . 'counsel-gtags-find-symbol)
+;;          ("M-," . 'counsel-gtags-go-backward)
+;;          ("M-." . 'counsel-gtags-go-forward))
+;;   :config
+;;   (setq counsel-gtags-auto-update t)    ; ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¿å­˜ã—ãŸã¨ãã«è‡ªå‹•çš„ã«tagãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›´æ–°ã™ã‚‹.
+;;   (add-hook 'c-mode-hook 'counsel-gtags-mode)
+;;   (add-hook 'c++-mode-hook 'counsel-gtags-mode))

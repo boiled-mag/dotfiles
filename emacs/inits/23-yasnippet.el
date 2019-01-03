@@ -3,10 +3,12 @@
 ;;
 ;; yasnippet
 ;;
-(when (require 'yasnippet nil t)
-  (with-eval-after-load 'yasnippet
-    (yas-global-mode 1)))
+(use-package yasnippet
+  :ensure t
+  :pin melpa
+  :diminish yas-minor-mode
+  :init
+  (yas-global-mode t))
 
-;;
 ;; M-x yas-describe-tablesでTABで展開可能なテンプレートの一覧を表示することができる.
-;;
+

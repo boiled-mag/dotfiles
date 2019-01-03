@@ -25,7 +25,6 @@
 ;; C++モードに個人設定関数をフックする.
 (add-hook 'c++-mode-hook 'my/c++-mode-hook)
 
-
 ;;
 ;; C言語向け
 ;;
@@ -44,7 +43,6 @@
 ;; Cモードに個人設定関数をフックする.
 (add-hook 'c-mode-hook 'my/c-mode-hook)
 
-
 ;;
 ;; helm-gtags-mode
 ;;
@@ -52,10 +50,8 @@
 ;;(add-hook 'c-mode-hook 'helm-gtags-mode)
 ;;(add-hook 'c++-mode-hook 'helm-gtags-mode)
 
-
 ;;
 ;; highlight-symbol-mode
 ;;
-(add-hook 'c-mode-hook 'highlight-symbol-mode)
-(add-hook 'c++-mode-hook 'highlight-symbol-mode)
-
+;; (add-hook 'c-mode-hook 'highlight-symbol-mode)
+;; (add-hook 'c++-mode-hook 'highlight-symbol-mode)
