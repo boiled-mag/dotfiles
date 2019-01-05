@@ -55,14 +55,12 @@
   (set-face-attribute
    'tabbar-default nil
    :family "fontset-CamingoCode_RictyDiminished"
-;;   :background "#34495E"
    :background "#2f4f4f"
    :foreground "#EEEEEE"
    :height 1.00
    )
   (set-face-attribute
    'tabbar-unselected nil
-;;   :background "#34495E"
    :background "#2f4f4f"
    :foreground "#EEEEEE"
    :box nil
@@ -99,11 +97,27 @@
 ;;
 ;; Undo-tree
 ;;
+;; C-x u で履歴をツリー形式で表示させることができる.
+(use-package undo-tree
+  :ensure t
+  :diminish (global-undo-tree-mode undo-tree-mode)
+  :config
+  (global-undo-tree-mode))
 
 ;;
-;; Multiple-cursors
+;; multiple-cursors
 ;;
+(use-package multiple-cursors
+  :ensure t
+  :bind
+  (("C->" . 'mc/mark-next-like-this)
+   ("C-<" . 'mc/mark-previous-like-this)
+   ("C-c C-<" . 'mc/mark-all-like-this)))
 
 ;;
-;; expand-region.el
+;; expand-region
 ;;
+(use-package expand-region
+  :ensure t
+  :bind
+  (("C-=" . 'er/expand-region)))
