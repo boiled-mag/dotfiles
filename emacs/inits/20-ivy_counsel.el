@@ -27,6 +27,16 @@
   (defvar counsel-find-file-ignore-regexp (regexp-opt '("./" "../"))))
 
 ;;
+;; ivy-rich
+;;
+(use-package ivy-rich
+  :after ivy
+  :ensure t
+  :diminish ivy-rich-mode
+  :config
+  (ivy-rich-mode))
+
+;;
 ;; counsel-gtags.el
 ;;
 ;; 2019.1.3 LSPモードを使用するため一時的にOFFにしている.

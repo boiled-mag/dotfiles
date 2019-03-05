@@ -121,3 +121,37 @@
   :ensure t
   :bind
   (("C-=" . 'er/expand-region)))
+
+;;
+;; nyan-mode
+;;
+(use-package nyan-mode
+  :if window-system
+  :ensure t
+  :config
+  (nyan-mode)
+  (nyan-start-animation))
+
+;;
+;; beacon
+;;
+(use-package beacon
+  :ensure t
+  :pin melpa                            ; melpaからインストールする.
+  :diminish beacon-mode
+  :custom
+  (beacon-color "orange")
+  :config
+  (beacon-mode 1))
+
+;;
+;; neotree
+;;
+(use-package neotree
+  :ensure t
+  :commands
+  (neotree-show neotree-hide neotree-dir neotree-find)
+  :custom
+  (neo-theme 'nerd2)
+  :bind
+  ("<f8>" . neotree-toggle))

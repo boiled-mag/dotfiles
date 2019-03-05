@@ -42,6 +42,10 @@
 (setq eol-mnemonic-mac "(CR)")
 (setq eol-mnemonic-unix "(LF)")
 
+;; タイトルバーにファイルのフルパス表示
+(setq frame-title-format
+      (format "%%f - Emacs@%s" (system-name)))
+
 ;; 言語設定 (UTF-8にする)
 ;; 2016.8.11 以下のような設定は不要.
 ;; 環境変数からlocaleを取得して適切に設定される.
