@@ -28,6 +28,8 @@ alias dir='ls --color=auto --format=vertical'
 alias vdir='ls --color=auto --format=long'
 alias ll='ls -l'
 
+alias sudo='sudo '
+
 LC_TIME=en_US.UTF-8
 
 PS1='[\u@\h \D{%Y %b %d(%a) %R} \W]\$ '
